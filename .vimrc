@@ -93,6 +93,7 @@ Plug 'majutsushi/tagbar'
 Plug 'skywind3000/asyncrun.vim'
 Plug 'tpope/vim-dispatch'
 Plug 'WolfgangMehner/vim-plugins'
+Plug 'romainl/vim-cool'
 "Plug 'LucHermitte/lh-cpp'
 " All of your Plugins must be added before the following line
 call plug#end()
@@ -167,6 +168,8 @@ map <up> <nop>
 map <down> <nop>
 map <left> <nop>
 map <right> <nop>
+
+"autocmd InsertEnter * :let @/=""
 " To ignore plugin indent changes, instead use:
 "filetype plugin on
 "
