@@ -129,3 +129,4 @@ alias ta="t a -t"
 alias tls="t ls"
 alias tn="t new -t"
 alias tk="tmux kill-session -t"
+DISPLAY=localhost:0.0
