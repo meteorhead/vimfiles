@@ -98,8 +98,9 @@ Plug 'romainl/vim-cool'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'thinca/vim-localrc'
 Plug 'christoomey/vim-tmux-navigator'
-Plug 'ianding1/leetcode.vim'
-let g:leetcode_browser='chrome'
+"Plug 'ianding1/leetcode.vim'
+"let g:leetcode_browser='chrome'
+"Plug 'jiangmiao/auto-pairs'
 "Plug 'SirVer/ultisnips'
 "Plug 'honza/vim-snippets'
 " All of your Plugins must be added before the following line
@@ -330,11 +331,16 @@ nnoremap <silent><nowait> <space>k  :<C-u>CocPrev<CR>
 " Resume latest coc list.
 nnoremap <silent><nowait> <space>p  :<C-u>CocListResume<CR>
 "
-" leetcode bindings
-nnoremap <leader>ll :LeetCodeList<cr>
-nnoremap <leader>lt :LeetCodeTest<cr>
-nnoremap <leader>ls :LeetCodeSubmit<cr>
-nnoremap <leader>li :LeetCodeSignIn<cr>
+autocmd InsertEnter * set cul
+autocmd InsertLeave * set nocul
+let &t_SI = "\e[6 q"
+let &t_EI = "\e[2 q"
+
+" optional reset cursor on start:
+"augroup myCmds
+"au!
+"autocmd VimEnter * silent !echo -ne "\e[1 q"
+"augroup END
 "autocmd InsertEnter * :let @/=""
 " To ignore plugin indent changes, instead use:
 "filetype plugin on
