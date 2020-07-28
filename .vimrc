@@ -34,6 +34,7 @@ syntax on
 " " colorscheme wombat256
 " " turn line numbers on
 set number
+set relativenumber
 set backspace=indent,eol,start
 set incsearch           " search as characters are entered
 set hlsearch            " highlight matches
@@ -43,7 +44,7 @@ if &t_Co > 2 || has("gui_running")
         set hlsearch        " Also switch on highlighting the last used search pattern.
 endif
 call plug#begin('~/.vim/plugged')
-
+packadd termdebug
 
 "Plug 'tpope/vim-fugitive'
 " plugin from http://vim-scripts.org/vim/scripts.html
@@ -63,10 +64,10 @@ call plug#begin('~/.vim/plugged')
 "let g:ycm_global_ycm_extra_conf = '~/.vim/.ycm_extra_conf.py'
 Plug 'majutsushi/tagbar'
 nmap <F8> :TagbarToggle<CR>
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plug 'junegunn/fzf.vim'
+nnoremap <C-p> :Files<CR>
 Plug 'w0rp/ale'
-Plug 'kien/ctrlp.vim'
-let g:ctrlp_map = '<C-p>'
-let g:ctrlp_cmd = 'CtrlP'
 Plug 'sjl/badwolf'
 Plug 'morhetz/gruvbox'
 Plug 'tomasr/molokai'
@@ -88,7 +89,6 @@ let g:clang_format#style_options = {
 Plug 'google/vim-maktaba'
 Plug 'google/vim-codefmt'
 Plug 'google/vim-glaive'
-Plug 'preservim/nerdtree'
 Plug 'majutsushi/tagbar'
 Plug 'skywind3000/asyncrun.vim'
 Plug 'tpope/vim-dispatch'
@@ -103,6 +103,7 @@ Plug 'christoomey/vim-tmux-navigator'
 "Plug 'jiangmiao/auto-pairs'
 "Plug 'SirVer/ultisnips'
 "Plug 'honza/vim-snippets'
+Plug 'takac/vim-hardtime'
 " All of your Plugins must be added before the following line
 call plug#end()
 call glaive#Install()
@@ -142,10 +143,6 @@ nnoremap <leader>f <C-f>
 " run
 "nnoremap <C-R> :!../build/%:r<CR>
 "nnoremap <C-r> :!~/projects/sandbox/build/sandbox:r<CR>
-" nerdtree
-map <C-n> :NERDTreeToggle<CR>
-" Close NERDTree if no other window is open
- "autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
  " move among buffers with CTRL
  map <C-x> :bdelete<CR>
 :nnoremap <Tab> :bnext<CR>
@@ -239,10 +236,10 @@ nmap <silent> [g <Plug>(coc-diagnostic-prev)
 nmap <silent> ]g <Plug>(coc-diagnostic-next)
 
 " GoTo code navigation.
-nmap <silent> gd <Plug>(coc-definition)
-nmap <silent> gy <Plug>(coc-type-definition)
-nmap <silent> gi <Plug>(coc-implementation)
-nmap <silent> gr <Plug>(coc-references)
+nmap <silent> <leader>gd <Plug>(coc-definition)
+nmap <silent> <leader>gy <Plug>(coc-type-definition)
+nmap <silent> <leader>gi <Plug>(coc-implementation)
+nmap <silent> <leader>gr <Plug>(coc-references)
 
 " Use K to show documentation in preview window.
 nnoremap <silent> K :call <SID>show_documentation()<CR>
@@ -336,6 +333,9 @@ autocmd InsertLeave * set nocul
 let &t_SI = "\e[6 q"
 let &t_EI = "\e[2 q"
 
+let g:hardtime_default_on = 1
+" termdebug shortcut
+:nnoremap <leader>td :Termdebug<CR>
 " optional reset cursor on start:
 "augroup myCmds
 "au!
