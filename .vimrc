@@ -336,6 +336,7 @@ let &t_EI = "\e[2 q"
 let g:hardtime_default_on = 1
 " termdebug shortcut
 :nnoremap <leader>td :Termdebug<CR>
+nnoremap 0 ^
 " optional reset cursor on start:
 "augroup myCmds
 "au!
